@@ -89,7 +89,7 @@ jobs:
       run: |
         git config --global user.email "revanth-reddy.datla@capgemini.com"
         git config --global user.name "Revanth Reddy Datla"
-        git add helm/go-web-app-chart/values.yaml
+        git add go-web-app-chart/values.yaml
         git commit -m "Update tag in Helm chart"
         git push
 
