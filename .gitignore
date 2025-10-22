@@ -20,3 +20,7 @@
 # Go workspace file
 go.work
 go.work.sum
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup

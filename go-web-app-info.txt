@@ -1,0 +1,40 @@
+log of this project:
+
+
+What to do:
+
+containarise the app                    - DONE  
+{problem faced: docker login solution: sudo docker login }
+
+create EKS K8S cluster using terraform    - DONE
+{problem faced: scp denied error in terraform console.
+    solution: Able to create cluster from Plural sight provided AWS console,
+    but they explicitly denied eks:createCluster api call in SCP (Dont know How?)
+    Also they only allow ec2 instance type till t3.medium, so created self managed node group
+    as there is no option to configure instance type in EKS managed node group}
+
+
+Test app deployed in cluster
+    create a functional eks cluster with managed ec2 nodes                      - DONE
+    test deploy a app, create nodeport and test access using ec2 node external ip - DONE
+    {problem: which subnets to select for cluster, managed nodes
+    solution: eks cluster will be managed by AWS, AWS need subnets only to create ENI in these
+    subnets to create door for EKS to be in our VPC so public/private subnets are fine.
+    For managed nodes as i need to debug website access from internet i deployed in public subnets
+    for production better deploy in private subnets.}
+    deploy ingress                                          - DONE                                     
+    deploy a nginx lb controller                            - DONE
+    test access                                             - DONE
+
+CI using Github Actions
+
+CD using ArgoCD
+
+
+terraform log
+1. create eks cluster using eks module
+
+
+ Error: creating EKS Cluster (go-web-app-imvRGTdb): operation error EKS: CreateCluster, https response error StatusCode: 403, RequestID: 0a4eadfa-e9d5-45d7-ade5-3c575743ed8f, api error AccessDeniedException: User: arn:aws:iam::454631876617:user/cloud_user is not authorized to perform: eks:CreateCluster on resource: arn:aws:eks:us-east-1:454631876617:cluster/go-web-app-imvRGTdb with an explicit deny in a service control policy
+
+https://get.helm.sh/helm-v4.0.0-beta.1-linux-amd64.tar.gz
